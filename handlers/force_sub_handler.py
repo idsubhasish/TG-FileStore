@@ -12,11 +12,11 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
 async def get_invite_link(bot: Client, chat_id: Union[str, int]):
     try:
-        invite_link = await bot.create_chat_invite_link(chat_id=chat_id)
+        invite_link = await bot.export_chat_invite_link(chat_id)
         return invite_link
     except FloodWait as e:
-        print(f"Sleep of {e.value}s caused by FloodWait ...")
-        await asyncio.sleep(e.value)
+        print(f"Sleep of {e.x}s caused by FloodWait ...")
+        await asyncio.sleep(e.x)
         return await get_invite_link(bot, chat_id)
 
 
